@@ -1,7 +1,7 @@
 const AudioService = {
     synthesis: window.speechSynthesis,
     
-    playWord(wordText) {
+    playWord(wordText, rate = 0.9) {
         if (!this.synthesis) {
             console.warn('Speech synthesis not supported in this browser.');
             return;
@@ -12,7 +12,7 @@ const AudioService = {
 
         const utterance = new SpeechSynthesisUtterance(wordText);
         utterance.lang = 'en-US'; // Use US English
-        utterance.rate = 0.9; // Slightly slower for kids
+        utterance.rate = rate; // Configurable rate
         utterance.pitch = 1.1; // Slightly higher pitch
 
         // Try to find a good female voice if available

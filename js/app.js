@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const quizQuestion = document.getElementById('quiz-question');
     const quizWordDisplay = document.getElementById('quiz-word-display');
+    const quizAudioControls = document.getElementById('quiz-audio-controls');
     const btnQuizAudio = document.getElementById('btn-quiz-audio');
     const quizOptionsContainer = document.getElementById('quiz-options');
     const quizFeedback = document.getElementById('quiz-feedback');
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btnFinishLearning = document.getElementById('btn-finish-learning');
     const btnRestartLearning = document.getElementById('btn-restart-learning');
     const btnQuitLearning = document.getElementById('btn-quit-learning');
+    const btnHint = document.getElementById('btn-hint');
 
     let currentLesson = null;
     let learningQueue = [];
@@ -68,21 +70,48 @@ document.addEventListener('DOMContentLoaded', async () => {
     let itemsCompleted = 0;
     let currentLives = 3;
     let copyTimerInterval = null;
+    let comboCount = 0;
+
+    function updateCombo(isCorrect) {
+        if (isCorrect) {
+            comboCount++;
+            if (comboCount === 3) {
+                learningProgressBar.classList.add('on-fire');
+                if (typeof Confetti !== 'undefined') Confetti.fire();
+            }
+        } else {
+            comboCount = 0;
+            learningProgressBar.classList.remove('on-fire');
+        }
+    }
 
     await DataService.loadData();
     updateDashboard();
     renderRoadmap();
-    showScreen('home');
+    history.replaceState({ screen: 'home' }, '', '#home');
+    showScreen('home', false);
     
     window.addEventListener('resize', () => {
         if(screens.home.classList.contains('active')) drawRoadmapPath();
     });
 
-    function showScreen(screenName) {
+    window.addEventListener('popstate', (event) => {
+        const state = event.state;
+        if (state && state.screen) {
+            showScreen(state.screen, false);
+        } else {
+            showScreen('home', false);
+        }
+    });
+
+    function showScreen(screenName, pushHistory = true) {
         Object.values(screens).forEach(s => s.classList.remove('active'));
         screens[screenName].classList.add('active');
         if (screenName === 'home') {
             setTimeout(drawRoadmapPath, 50);
+        }
+        if (pushHistory) {
+            history.pushState({ screen: screenName }, '', `#${screenName}`);
         }
     }
 
@@ -117,6 +146,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 h.className = 'fa-solid fa-heart lost';
             }
         });
+        if (currentLives <= 1) {
+            btnHint.disabled = true;
+        } else {
+            btnHint.disabled = false;
+        }
     }
 
     function decreaseLife() {
@@ -305,6 +339,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
         
         currentLives = 3;
+        comboCount = 0;
+        learningProgressBar.classList.remove('on-fire');
         updateLivesUI();
         totalItemsInLesson = quizQueue.length;
         itemsCompleted = 0;
@@ -320,6 +356,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         currentUnitTitle.textContent = currentLesson.title;
         currentLives = 3;
+        comboCount = 0;
+        learningProgressBar.classList.remove('on-fire');
         updateLivesUI();
         
         if (currentLesson.isBoss) {
@@ -338,11 +376,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             learningQueue = [...currentLesson.words]; 
             quizQueue = [];
+            
+            let group1 = []; // word_to_meaning
+            let group3 = []; // listen_to_meaning
+            let group4 = []; // spelling_bee
+
             currentLesson.words.forEach(w => {
-                quizQueue.push({ type: 'word_to_meaning', wordData: w });
-                quizQueue.push({ type: 'listen_to_meaning', wordData: w });
+                group1.push({ type: 'word_to_meaning', wordData: w });
+                group3.push({ type: 'listen_to_meaning', wordData: w });
+                group4.push({ type: 'spelling_bee', wordData: w });
             });
-            shuffle(quizQueue);
+            shuffle(group1);
+            shuffle(group3);
+            shuffle(group4);
+
+            quizQueue.push(...group1);
 
             // Add a Match Pairs game using 4 words from this lesson
             if (currentLesson.words.length >= 4) {
@@ -350,6 +398,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 shuffle(chunk);
                 quizQueue.push({ type: 'match_pairs', wordsData: chunk.slice(0, 4) });
             }
+
+            quizQueue.push(...group3);
+            quizQueue.push(...group4);
         }
 
         totalItemsInLesson = learningQueue.length + quizQueue.length;
@@ -379,6 +430,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         phaseQuiz.classList.remove('active');
         phaseCopy.classList.remove('active');
+        phaseMatch.classList.remove('active');
+        phaseSpelling.classList.remove('active');
+        btnHint.style.display = 'none';
         phaseFlashcard.classList.add('active');
         flashcard.classList.remove('flipped');
 
@@ -400,6 +454,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // --- COPY PHASE ---
     function startCopyPhase() {
+        btnHint.style.display = 'none';
         phaseFlashcard.classList.remove('active');
         phaseCopy.classList.add('active');
         
@@ -463,6 +518,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         phaseQuiz.classList.remove('active');
         phaseMatch.classList.remove('active');
         phaseSpelling.classList.remove('active');
+        btnHint.style.display = 'none'; // hide by default, show in specific phases
 
         if (currentQuizItem.type === 'match_pairs') {
             phaseMatch.classList.add('active');
@@ -481,8 +537,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const uniqueMeanings = new Set([correctWord.meaning.toLowerCase().trim()]);
         let wrongOptions = [];
         
-        const unitWords = DataService.vocabData.find(u => u.id === currentLesson.unitId).words;
-        let pool = [...unitWords];
+        let pool = [];
+        if (currentLesson.id === 'healing') {
+            pool = [...DataService.progress.weakWords];
+        } else {
+            const unit = DataService.vocabData.find(u => u.id === currentLesson.unitId);
+            if (unit) pool = [...unit.words];
+        }
         shuffle(pool);
         
         for (let w of pool) {
@@ -513,11 +574,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         let options = [correctWord, ...wrongOptions];
         shuffle(options);
+        btnHint.style.display = 'block';
 
         if (currentQuizItem.type === 'word_to_meaning') {
             quizQuestion.textContent = currentLesson.isBoss ? "BOSS: Chọn nghĩa tiếng Việt đúng" : "Chọn nghĩa tiếng Việt đúng";
             quizWordDisplay.style.display = 'block';
-            btnQuizAudio.style.display = 'none';
+            quizAudioControls.style.display = 'none';
             quizWordDisplay.textContent = correctWord.word;
             setTimeout(() => AudioService.playWord(correctWord.word), 200);
 
@@ -532,7 +594,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         else if (currentQuizItem.type === 'listen_to_meaning') {
             quizQuestion.textContent = currentLesson.isBoss ? "BOSS: Nghe và chọn nghĩa" : "Nghe và chọn nghĩa tương ứng";
             quizWordDisplay.style.display = 'none';
-            btnQuizAudio.style.display = 'flex';
+            quizAudioControls.style.display = 'flex';
             setTimeout(() => AudioService.playWord(correctWord.word), 200);
 
             options.forEach(opt => {
@@ -560,8 +622,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             btnElement.classList.add('correct');
             feedbackIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i> Chính xác!';
             quizFeedback.className = 'quiz-feedback active correct';
+            updateCombo(true);
         } else {
             DataService.addWeakWord(currentQuizItem.wordData);
+            updateCombo(false);
             const isDead = decreaseLife();
             
             btnElement.classList.add('incorrect');
@@ -576,13 +640,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // --- MINIGAMES LOGIC ---
     function renderMatchPairs(wordsData) {
+        btnHint.style.display = 'none';
         matchGrid.innerHTML = '';
-        let items = [];
+        let enItems = [];
+        let viItems = [];
         wordsData.forEach(w => {
-            items.push({ text: w.word, type: 'en', id: w.word });
-            items.push({ text: w.meaning, type: 'vi', id: w.word });
+            enItems.push({ text: w.word, type: 'en', id: w.word });
+            viItems.push({ text: w.meaning, type: 'vi', id: w.word });
         });
-        shuffle(items);
+        shuffle(enItems);
+        shuffle(viItems);
+
+        let items = [];
+        for (let i = 0; i < enItems.length; i++) {
+            items.push(enItems[i]);
+            items.push(viItems[i]);
+        }
 
         let selected = null;
         let matchedCount = 0;
@@ -606,6 +679,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         selected.classList.remove('selected');
                         selected.classList.add('matched');
                         matchedCount += 2;
+                        updateCombo(true);
                         
                         if (matchedCount === items.length) {
                             setTimeout(() => {
@@ -625,6 +699,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         const wrongWordData = wordsData.find(w => w.word === item.id || w.word === selected.dataset.id);
                         if (wrongWordData) DataService.addWeakWord(wrongWordData);
                         
+                        updateCombo(false);
                         const isDead = decreaseLife();
                         if (isDead) return;
 
@@ -644,35 +719,47 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function renderSpellingBee(wordData) {
+        btnHint.style.display = 'block';
         spellingMeaning.textContent = wordData.meaning;
         spellingSlots.innerHTML = '';
         spellingLetters.innerHTML = '';
         
         const wordUpper = wordData.word.toUpperCase();
-        let letters = wordUpper.split('');
-        shuffle(letters);
-        
         let filledCount = 0;
 
         // Create empty slots
         for (let i = 0; i < wordUpper.length; i++) {
+            const char = wordUpper[i];
             const slot = document.createElement('div');
             slot.className = 'spelling-slot';
             slot.dataset.index = i;
-            slot.addEventListener('click', () => {
-                if (slot.textContent) {
-                    // return letter
-                    const letterBtnId = slot.dataset.sourceId;
-                    document.getElementById(letterBtnId).classList.remove('used');
-                    slot.textContent = '';
-                    slot.dataset.sourceId = '';
-                    filledCount--;
-                }
-            });
+            
+            if (char === ' ' || char === '-') {
+                slot.textContent = char;
+                slot.classList.add('pre-filled');
+                slot.style.borderBottom = 'none';
+                filledCount++;
+            } else {
+                slot.addEventListener('click', () => {
+                    if (slot.textContent && !slot.classList.contains('pre-filled')) {
+                        // return letter
+                        const letterBtnId = slot.dataset.sourceId;
+                        if (letterBtnId) {
+                            document.getElementById(letterBtnId).classList.remove('used');
+                            slot.textContent = '';
+                            slot.dataset.sourceId = '';
+                            filledCount--;
+                        }
+                    }
+                });
+            }
             spellingSlots.appendChild(slot);
         }
 
         // Create letter buttons
+        let letters = wordUpper.split('').filter(c => c !== ' ' && c !== '-');
+        shuffle(letters);
+
         letters.forEach((char, idx) => {
             const btn = document.createElement('div');
             btn.className = 'spelling-letter';
@@ -683,7 +770,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (btn.classList.contains('used')) return;
                 
                 // Find first empty slot
-                const emptySlot = Array.from(spellingSlots.children).find(s => !s.textContent);
+                const emptySlot = Array.from(spellingSlots.children).find(s => !s.textContent && !s.classList.contains('pre-filled'));
                 if (emptySlot) {
                     emptySlot.textContent = char;
                     emptySlot.dataset.sourceId = btn.id;
@@ -706,39 +793,54 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function checkSpellingBee(correctWordUpper, wordData) {
-        const currentSpelling = Array.from(spellingSlots.children).map(s => s.textContent).join('');
+        const slots = Array.from(spellingSlots.children);
+        const letters = Array.from(spellingLetters.children);
+        const currentSpelling = slots.map(s => s.textContent).join('');
+
+        // Disable all letters & slots to prevent clicking during check
+        slots.forEach(s => s.style.pointerEvents = 'none');
+        letters.forEach(b => b.style.pointerEvents = 'none');
+
+        // Color coding feedback
+        slots.forEach((s, i) => {
+            if (s.textContent === correctWordUpper[i]) {
+                s.style.backgroundColor = 'var(--success)';
+                s.style.borderColor = 'var(--success)';
+                s.style.color = 'white';
+            } else {
+                s.style.backgroundColor = 'var(--warning)';
+                s.style.borderColor = 'var(--warning)';
+                s.style.color = 'white';
+            }
+        });
+
         if (currentSpelling === correctWordUpper) {
             SoundEffects.playCorrect();
             quizFeedback.className = 'quiz-feedback active correct';
             feedbackIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i> Xuất sắc!';
-            // Disable slots
-            Array.from(spellingSlots.children).forEach(s => s.style.pointerEvents = 'none');
+            updateCombo(true);
         } else {
             DataService.addWeakWord(wordData);
-            const isDead = decreaseLife();
-            if (isDead) return;
+            updateCombo(false);
             
             spellingSlots.classList.add('shake');
             setTimeout(() => {
                 spellingSlots.classList.remove('shake');
-                // reset
-                Array.from(spellingSlots.children).forEach(s => {
-                    s.textContent = '';
-                    s.dataset.sourceId = '';
-                });
-                Array.from(spellingLetters.children).forEach(b => b.classList.remove('used'));
             }, 600);
+
+            quizFeedback.className = 'quiz-feedback active incorrect';
+            feedbackIcon.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Sai rồi! Chú ý màu sắc nhé.`;
+            quizQueue.push(currentQuizItem);
         }
     }
 
     btnNextQuiz.addEventListener('click', () => {
         if (quizFeedback.classList.contains('correct')) {
-            quizQueue.shift();
             itemsCompleted++;
-            updateProgressBar();
-        } else {
-            quizQueue.shift(); 
         }
+        quizQueue.shift();
+        updateProgressBar();
+        quizFeedback.classList.remove('active');
         showNextQuiz();
     });
 
@@ -782,6 +884,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     btnBackLearning.addEventListener('click', () => showScreen('home'));
+    
     btnFinishLearning.addEventListener('click', () => {
         renderRoadmap();
         showScreen('home');
@@ -801,4 +904,42 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderRoadmap();
         showScreen('home');
     });
+
+    // Hint Event
+    btnHint.addEventListener('click', () => {
+        if (currentLives <= 1) return; // Prevent suicide
+
+        if (phaseQuiz.classList.contains('active')) {
+            const btns = Array.from(quizOptionsContainer.querySelectorAll('.quiz-option-btn'));
+            const wrongBtns = btns.filter(b => b.textContent !== currentQuizItem.wordData.meaning && b.style.pointerEvents !== 'none');
+            if (wrongBtns.length > 0) {
+                decreaseLife();
+                const randomWrong = wrongBtns[Math.floor(Math.random() * wrongBtns.length)];
+                randomWrong.style.opacity = '0.3';
+                randomWrong.style.pointerEvents = 'none';
+            }
+        } else if (phaseSpelling.classList.contains('active')) {
+            const slots = Array.from(spellingSlots.children);
+            const emptySlotIndex = slots.findIndex(s => !s.textContent && !s.classList.contains('pre-filled'));
+            if (emptySlotIndex !== -1) {
+                const correctChar = currentQuizItem.wordData.word.toUpperCase()[emptySlotIndex];
+                const letters = Array.from(spellingLetters.children);
+                const correctBtn = letters.find(b => !b.classList.contains('used') && b.textContent === correctChar);
+                if (correctBtn) {
+                    decreaseLife();
+                    correctBtn.click();
+                }
+            }
+        }
+    });
+
+    // Speed Audio Bindings
+    document.getElementById('btn-audio-slow').addEventListener('click', (e) => { e.stopPropagation(); AudioService.playWord(fcWord.textContent, 0.6); });
+    document.getElementById('btn-audio-vslow').addEventListener('click', (e) => { e.stopPropagation(); AudioService.playWord(fcWord.textContent, 0.3); });
+
+    document.getElementById('btn-quiz-audio-slow').addEventListener('click', (e) => { e.stopPropagation(); if(currentQuizItem) AudioService.playWord(currentQuizItem.wordData.word, 0.6); });
+    document.getElementById('btn-quiz-audio-vslow').addEventListener('click', (e) => { e.stopPropagation(); if(currentQuizItem) AudioService.playWord(currentQuizItem.wordData.word, 0.3); });
+
+    document.getElementById('btn-spelling-audio-slow').addEventListener('click', (e) => { e.stopPropagation(); if(currentQuizItem) AudioService.playWord(currentQuizItem.wordData.word, 0.6); });
+    document.getElementById('btn-spelling-audio-vslow').addEventListener('click', (e) => { e.stopPropagation(); if(currentQuizItem) AudioService.playWord(currentQuizItem.wordData.word, 0.3); });
 });

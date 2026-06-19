@@ -83,10 +83,13 @@
             <!-- LEARNING SCREEN -->
             <div id="learning-screen" class="screen">
                 <div class="top-bar">
-                    <button id="btn-back-learning" class="btn btn-circle"><i class="fa-solid fa-xmark"></i></button>
+                    <button id="btn-back-learning" class="btn btn-circle" title="Thoát"><i class="fa-solid fa-xmark"></i></button>
                     <div class="progress-bar-container">
-                        <div id="learning-progress-bar" class="progress-bar"></div>
+                        <div id="learning-progress-bar" class="progress-bar">
+                            <div id="combo-toast" class="combo-toast"><i class="fa-solid fa-fire"></i> Đang vào cầu!</div>
+                        </div>
                     </div>
+                    <button id="btn-hint" class="btn btn-circle btn-hint-style" title="Gợi ý (-1 Tim)" style="display: none;"><i class="fa-solid fa-lightbulb"></i></button>
                     <div id="lives-container" class="lives-container">
                         <i class="fa-solid fa-heart"></i>
                         <i class="fa-solid fa-heart"></i>
@@ -106,7 +109,13 @@
                                     <div id="fc-word" class="fc-word">Word</div>
                                     <div id="fc-phonetic" class="fc-phonetic">/wɜːrd/</div>
                                     <div id="fc-type" class="fc-type-badge">noun</div>
-                                    <button id="btn-audio" class="btn btn-circle btn-audio pulse-anim"><i class="fa-solid fa-volume-high"></i></button>
+                                    <div class="audio-controls">
+                                        <button id="btn-audio" class="btn btn-circle btn-audio pulse-anim" title="Bình thường"><i class="fa-solid fa-volume-high"></i></button>
+                                        <div class="speed-btns">
+                                            <button id="btn-audio-slow" class="btn-speed" title="Chậm">0.6x</button>
+                                            <button id="btn-audio-vslow" class="btn-speed" title="Rất chậm">0.3x</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="flashcard-back">
                                     <div id="fc-meaning" class="fc-meaning">Nghĩa của từ</div>
@@ -139,7 +148,13 @@
                     <div class="instruction-text" id="quiz-question">Chọn nghĩa tiếng Việt đúng</div>
                     
                     <div class="quiz-visual">
-                        <button id="btn-quiz-audio" class="btn btn-circle btn-audio btn-large-audio pulse-anim" style="display: none;"><i class="fa-solid fa-volume-high"></i></button>
+                        <div class="audio-controls" id="quiz-audio-controls" style="display: none;">
+                            <button id="btn-quiz-audio" class="btn btn-circle btn-audio btn-large-audio pulse-anim" title="Bình thường"><i class="fa-solid fa-volume-high"></i></button>
+                            <div class="speed-btns">
+                                <button id="btn-quiz-audio-slow" class="btn-speed" title="Chậm">0.6x</button>
+                                <button id="btn-quiz-audio-vslow" class="btn-speed" title="Rất chậm">0.3x</button>
+                            </div>
+                        </div>
                         <h3 id="quiz-word-display" class="quiz-main-word">Word</h3>
                     </div>
 
@@ -160,7 +175,13 @@
                 <div id="phase-spelling" class="learning-phase">
                     <div class="instruction-text">Nghe và sắp xếp chữ cái</div>
                     <div class="spelling-meaning" id="spelling-meaning">Nghĩa của từ</div>
-                    <button id="btn-spelling-audio" class="btn btn-circle btn-audio pulse-anim" style="margin: 0 auto 30px;"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="audio-controls" style="margin: 0 auto 30px;">
+                        <button id="btn-spelling-audio" class="btn btn-circle btn-audio pulse-anim" title="Bình thường"><i class="fa-solid fa-volume-high"></i></button>
+                        <div class="speed-btns">
+                            <button id="btn-spelling-audio-slow" class="btn-speed" title="Chậm">0.6x</button>
+                            <button id="btn-spelling-audio-vslow" class="btn-speed" title="Rất chậm">0.3x</button>
+                        </div>
+                    </div>
                     
                     <div id="spelling-slots" class="spelling-slots"></div>
                     <div id="spelling-letters" class="spelling-letters"></div>
