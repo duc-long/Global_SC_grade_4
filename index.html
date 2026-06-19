@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học Tiếng Anh 4 - Global Success</title>
+    
+    <!-- PWA Setup -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#58cc02">
+    <link rel="apple-touch-icon" href="assets/icon.png">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- HEADER -->
+        <header class="app-header">
+            <div class="logo">
+                <img src="assets/icon.png" alt="EngFun Logo" class="logo-img">
+                <h1>EngFun</h1>
+            </div>
+            <div class="top-nav-right">
+                <!-- Empty for layout -->
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main id="main-content">
+            <!-- Loading State -->
+            <div id="loading" class="screen active">
+                <div class="spinner"></div>
+                <p>Đang tải dữ liệu...</p>
+            </div>
+
+            <!-- HOME SCREEN (Dashboard + Roadmap) -->
+            <div id="home-screen" class="screen">
+                <!-- DASHBOARD -->
+                <div class="dashboard-panel">
+                    <h2 class="dash-title"><i class="fa-solid fa-user-astronaut"></i> Hồ sơ của bé</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon streak-icon"><i class="fa-solid fa-fire"></i></div>
+                            <div class="stat-value" id="dash-streak">0</div>
+                            <div class="stat-label">Ngày học</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon xp-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <div class="stat-value" id="dash-xp">0</div>
+                            <div class="stat-label">Tổng điểm</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon words-icon"><i class="fa-solid fa-book-open"></i></div>
+                            <div class="stat-value" id="dash-words">0</div>
+                            <div class="stat-label">Từ đã thuộc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROADMAP -->
+                <div class="roadmap-section">
+                    <h2 class="screen-title">Bản đồ phiêu lưu</h2>
+                    <div id="roadmap-wrapper">
+                        <!-- SVG Canvas for the path -->
+                        <svg id="roadmap-svg" xmlns="http://www.w3.org/2000/svg">
+                            <path id="roadmap-path" fill="none" stroke="var(--locked-bg)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" />
+                            <path id="roadmap-path-unlocked" fill="none" stroke="var(--primary)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div id="roadmap-container" class="roadmap-container">
+                            <!-- Units will be generated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEARNING SCREEN -->
+            <div id="learning-screen" class="screen">
+                <div class="top-bar">
+                    <button id="btn-back-learning" class="btn btn-circle"><i class="fa-solid fa-xmark"></i></button>
+                    <div class="progress-bar-container">
+                        <div id="learning-progress-bar" class="progress-bar"></div>
+                    </div>
+                    <div id="lives-container" class="lives-container">
+                        <i class="fa-solid fa-heart"></i>
+                        <i class="fa-solid fa-heart"></i>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                
+                <h2 id="current-unit-title" class="unit-title">Unit Title</h2>
+                
+                <!-- PHASE 1: FLASHCARDS -->
+                <div id="phase-flashcard" class="learning-phase active">
+                    <div class="instruction-text">Lật thẻ để học từ vựng mới</div>
+                    <div class="flashcard-container">
+                        <div id="flashcard" class="flashcard">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <div id="fc-word" class="fc-word">Word</div>
+                                    <div id="fc-phonetic" class="fc-phonetic">/wɜːrd/</div>
+                                    <div id="fc-type" class="fc-type-badge">noun</div>
+                                    <button id="btn-audio" class="btn btn-circle btn-audio pulse-anim"><i class="fa-solid fa-volume-high"></i></button>
+                                </div>
+                                <div class="flashcard-back">
+                                    <div id="fc-meaning" class="fc-meaning">Nghĩa của từ</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls">
+                        <button id="btn-flip" class="btn btn-secondary">Lật thẻ <i class="fa-solid fa-repeat"></i></button>
+                        <button id="btn-next-flashcard" class="btn btn-primary">Tiếp theo <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- PHASE 1.5: COPY WORDS -->
+                <div id="phase-copy" class="learning-phase">
+                    <div class="instruction-text">Hãy lấy vở ra chép từ vựng nhé!</div>
+                    <div class="copy-timer-container">
+                        <i class="fa-regular fa-clock"></i> <span id="copy-timer">15:00</span>
+                    </div>
+                    <ul id="copy-word-list" class="copy-word-list">
+                        <!-- Word list dynamically generated -->
+                    </ul>
+                    <div class="controls" style="margin-top: 20px;">
+                        <button id="btn-finish-copy" class="btn btn-primary">Đã chép xong <i class="fa-solid fa-check"></i></button>
+                    </div>
+                </div>
+
+                <!-- PHASE 2: QUIZ (Interactive game) -->
+                <div id="phase-quiz" class="learning-phase">
+                    <div class="instruction-text" id="quiz-question">Chọn nghĩa tiếng Việt đúng</div>
+                    
+                    <div class="quiz-visual">
+                        <button id="btn-quiz-audio" class="btn btn-circle btn-audio btn-large-audio pulse-anim" style="display: none;"><i class="fa-solid fa-volume-high"></i></button>
+                        <h3 id="quiz-word-display" class="quiz-main-word">Word</h3>
+                    </div>
+
+                    <div id="quiz-options" class="quiz-options-container">
+                        <!-- Options generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- PHASE 3: MATCH PAIRS -->
+                <div id="phase-match" class="learning-phase">
+                    <div class="instruction-text">Nối từ tiếng Anh với nghĩa tiếng Việt</div>
+                    <div id="match-grid" class="match-grid">
+                        <!-- match items dynamically generated -->
+                    </div>
+                </div>
+
+                <!-- PHASE 4: SPELLING BEE -->
+                <div id="phase-spelling" class="learning-phase">
+                    <div class="instruction-text">Nghe và sắp xếp chữ cái</div>
+                    <div class="spelling-meaning" id="spelling-meaning">Nghĩa của từ</div>
+                    <button id="btn-spelling-audio" class="btn btn-circle btn-audio pulse-anim" style="margin: 0 auto 30px;"><i class="fa-solid fa-volume-high"></i></button>
+                    
+                    <div id="spelling-slots" class="spelling-slots"></div>
+                    <div id="spelling-letters" class="spelling-letters"></div>
+                </div>
+                
+                <!-- Quiz Feedback Overlay -->
+                <div id="quiz-feedback" class="quiz-feedback">
+                    <div id="feedback-icon" class="feedback-icon"></div>
+                    <button id="btn-next-quiz" class="btn btn-primary">Tiếp tục <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- COMPLETION SCREEN -->
+            <div id="completion-screen" class="screen">
+                <div class="celebration"><i class="fa-solid fa-trophy" style="color: var(--warning)"></i></div>
+                <h2>Tuyệt vời!</h2>
+                <p>Bạn đã hoàn thành <br><strong id="completed-unit-name"></strong></p>
+                <div class="xp-reward">+20 XP</div>
+                <button id="btn-finish-learning" class="btn btn-primary btn-large"><i class="fa-solid fa-map-location-dot"></i> Quay lại lộ trình</button>
+            </div>
+
+            <!-- GAME OVER SCREEN -->
+            <div id="game-over-screen" class="screen">
+                <div class="celebration shake"><i class="fa-solid fa-heart-crack" style="color: var(--danger)"></i></div>
+                <h2>Hết tim mất rồi!</h2>
+                <p>Bạn đã trả lời sai quá nhiều. Hãy nghỉ ngơi một chút và thử lại nhé!</p>
+                <button id="btn-restart-learning" class="btn btn-danger btn-large" style="margin-top: 30px;"><i class="fa-solid fa-rotate-left"></i> Thử lại ngay</button>
+                <button id="btn-quit-learning" class="btn btn-secondary btn-large" style="margin-top: 10px;"><i class="fa-solid fa-map"></i> Về Bản đồ</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data/vocab.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/confetti.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Service Worker Registration for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

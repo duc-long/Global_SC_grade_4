@@ -1,0 +1,1795 @@
+const VOCAB_DATA = [
+  {
+    "id": 1,
+    "title": "My friends",
+    "words": [
+      {
+        "word": "Age",
+        "type": "n",
+        "phonetic": "/eɪdʒ/",
+        "meaning": "Tuổi",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Age&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "America",
+        "type": "n",
+        "phonetic": "/əˈmerɪkə/",
+        "meaning": "Nước Mỹ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=America&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Australia",
+        "type": "n",
+        "phonetic": "/ɒˈstreɪliə/",
+        "meaning": "Nước Úc",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Australia&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Britain",
+        "type": "n",
+        "phonetic": "/ˈbrɪtən/",
+        "meaning": "Vương quốc Anh",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Britain&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Country",
+        "type": "n",
+        "phonetic": "/ˈkʌntri/",
+        "meaning": "Quốc gia",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Country&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Friend",
+        "type": "n",
+        "phonetic": "/frend/",
+        "meaning": "Bạn bè",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Friend&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Friendly",
+        "type": "adj",
+        "phonetic": "/ˈfrendli/",
+        "meaning": "Thân thiện",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Friendly&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "From",
+        "type": "preposition",
+        "phonetic": "/frəm/",
+        "meaning": "Đến từ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=From&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Japan",
+        "type": "n",
+        "phonetic": "/dʒəˈpæn/",
+        "meaning": "Nhật Bản",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Japan&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Malaysia",
+        "type": "n",
+        "phonetic": "/məˈleɪziə/",
+        "meaning": "Nước Malaysia",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Malaysia&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "New",
+        "type": "adj",
+        "phonetic": "/njuː/",
+        "meaning": "Mới",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=New&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Singapore",
+        "type": "n",
+        "phonetic": "/ˌsɪŋəˈpɔː/",
+        "meaning": "Nước Singapore",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Singapore&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Thailand",
+        "type": "n",
+        "phonetic": "/ˈtaɪlænd/",
+        "meaning": "Thái Lan",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Thailand&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Where",
+        "type": "adv",
+        "phonetic": "/weər/",
+        "meaning": "Ở đâu",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Where&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Who",
+        "type": "pronoun",
+        "phonetic": "/huː/",
+        "meaning": "Ai",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Who&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Years old",
+        "type": "adjective phrase",
+        "phonetic": "/jɪəz əʊld/",
+        "meaning": "Tuổi",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Years%20old&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Time and daily routines",
+    "words": [
+      {
+        "word": "AM",
+        "type": "n",
+        "phonetic": "/ˌeɪ ˈem/",
+        "meaning": "Sáng (giờ từ nửa đêm đến trưa)",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=AM&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Break",
+        "type": "n",
+        "phonetic": "/breɪk/",
+        "meaning": "Giờ giải lao",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Break&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Breakfast",
+        "type": "n",
+        "phonetic": "/ˈbrekfəst/",
+        "meaning": "Bữa sáng",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Breakfast&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Classroom",
+        "type": "n",
+        "phonetic": "/ˈklɑːsruːm/",
+        "meaning": "Lớp học",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Classroom&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Daily",
+        "type": "adj",
+        "phonetic": "/ˈdeɪli/",
+        "meaning": "Hàng ngày",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Daily&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Dinner",
+        "type": "n",
+        "phonetic": "/ˈdɪnər/",
+        "meaning": "Bữa tối",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Dinner&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Get up",
+        "type": "phrasal verb",
+        "phonetic": "/ɡet ʌp/",
+        "meaning": "Thức dậy",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Get%20up&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Homework",
+        "type": "n",
+        "phonetic": "/ˈhəʊmwɜːk/",
+        "meaning": "Bài tập về nhà",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Homework&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Lunch",
+        "type": "n",
+        "phonetic": "/lʌntʃ/",
+        "meaning": "Bữa trưa",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Lunch&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "O’clock",
+        "type": "adv",
+        "phonetic": "/əˈklɒk/",
+        "meaning": "Giờ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=O%E2%80%99clock&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "PM",
+        "type": "n",
+        "phonetic": "/ˌpiː ˈem/",
+        "meaning": "Chiều (giờ từ trưa đến nửa đêm)",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=PM&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Primary school",
+        "type": "n",
+        "phonetic": "/ˈpraɪməri skuːl/",
+        "meaning": "Trường tiểu học",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Primary%20school&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Pupil",
+        "type": "n",
+        "phonetic": "/ˈpjuːpəl/",
+        "meaning": "Học sinh",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Pupil&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Routine",
+        "type": "n",
+        "phonetic": "/ruːˈtiːn/",
+        "meaning": "Thói quen hàng ngày",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Routine&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Time",
+        "type": "n",
+        "phonetic": "/taɪm/",
+        "meaning": "Thời gian",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Time&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "My week",
+    "words": [
+      {
+        "word": "At",
+        "type": "preposition",
+        "phonetic": "/æt/",
+        "meaning": "Vào lúc",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=At&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Day",
+        "type": "n",
+        "phonetic": "/deɪ/",
+        "meaning": "Ngày",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Day&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Housework",
+        "type": "n",
+        "phonetic": "/ˈhaʊswɜːk/",
+        "meaning": "Việc nhà",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Housework&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Listen",
+        "type": "v",
+        "phonetic": "/ˈlɪsən/",
+        "meaning": "Nghe",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Listen&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Music",
+        "type": "n",
+        "phonetic": "/ˈmjuːzɪk/",
+        "meaning": "Âm nhạc",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Music&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Study",
+        "type": "v",
+        "phonetic": "/ˈstʌdi/",
+        "meaning": "Học",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Study&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Weekend",
+        "type": "n",
+        "phonetic": "/ˌwiːkˈend/",
+        "meaning": "Cuối tuần",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Weekend&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Monday",
+        "type": "n",
+        "phonetic": "/ˈmʌndeɪ/",
+        "meaning": "Thứ 2",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Monday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Tuesday",
+        "type": "n",
+        "phonetic": "/ˈtjuːzdeɪ/",
+        "meaning": "Thứ 3",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Tuesday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Wednesday",
+        "type": "n",
+        "phonetic": "/ˈwenzdeɪ/",
+        "meaning": "Thứ 4",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Wednesday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Thursday",
+        "type": "n",
+        "phonetic": "/ˈθɜːzdeɪ/",
+        "meaning": "Thứ 5",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Thursday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Friday",
+        "type": "n",
+        "phonetic": "/ˈfraɪdeɪ/",
+        "meaning": "Thứ 6",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Friday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Saturday",
+        "type": "n",
+        "phonetic": "/ˈsætədeɪ/",
+        "meaning": "Thứ 7",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Saturday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Sunday",
+        "type": "n",
+        "phonetic": "/ˈsʌndeɪ/",
+        "meaning": "Chủ nhật",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Sunday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "My birthday party",
+    "words": [
+      {
+        "word": "Birthday",
+        "type": "n",
+        "phonetic": "/ˈbɜːθdeɪ/",
+        "meaning": "Sinh nhật",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Birthday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Chips",
+        "type": "n",
+        "phonetic": "/tʃɪps/",
+        "meaning": "Khoai tây chiên",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Chips&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Drink",
+        "type": "n, v",
+        "phonetic": "/drɪŋk/",
+        "meaning": "Uống, thức uống",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Drink&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Eat",
+        "type": "v",
+        "phonetic": "/iːt/",
+        "meaning": "Ăn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Eat&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Grapes",
+        "type": "n",
+        "phonetic": "/ɡreɪps/",
+        "meaning": "Nho",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Grapes&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Invitation",
+        "type": "n",
+        "phonetic": "/ˌɪnvɪˈteɪʃən/",
+        "meaning": "Lời mời",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Invitation&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Jam",
+        "type": "n",
+        "phonetic": "/dʒæm/",
+        "meaning": "Mứt",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Jam&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Lemonade",
+        "type": "n",
+        "phonetic": "/ˌleməˈneɪd/",
+        "meaning": "Nước chanh",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Lemonade&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Party",
+        "type": "n",
+        "phonetic": "/ˈpɑːti/",
+        "meaning": "Tiệc",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Party&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Some",
+        "type": "determiner",
+        "phonetic": "/sʌm/",
+        "meaning": "Một ít, một vài",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Some&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Want",
+        "type": "v",
+        "phonetic": "/wɒnt/",
+        "meaning": "Muốn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Want&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Water",
+        "type": "n",
+        "phonetic": "/ˈwɔːtər/",
+        "meaning": "Nước",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Water&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "When",
+        "type": "adv",
+        "phonetic": "/wen/",
+        "meaning": "Khi nào",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=When&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Things we can do",
+    "words": [
+      {
+        "word": "Badminton",
+        "type": "n",
+        "phonetic": "/ˈbædmɪntən/",
+        "meaning": "Cầu lông",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Badminton&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Bike",
+        "type": "n",
+        "phonetic": "/baɪk/",
+        "meaning": "Xe đạp",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Bike&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Can",
+        "type": "v",
+        "phonetic": "/kæn/",
+        "meaning": "Có thể",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Can&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Cook",
+        "type": "v",
+        "phonetic": "/kʊk/",
+        "meaning": "Nấu ăn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Cook&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Dance",
+        "type": "v",
+        "phonetic": "/dɑːns/",
+        "meaning": "Nhảy múa",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Dance&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Draw",
+        "type": "v",
+        "phonetic": "/drɔː/",
+        "meaning": "Vẽ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Draw&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Football",
+        "type": "n",
+        "phonetic": "/ˈfʊtbɔːl/",
+        "meaning": "Bóng đá",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Football&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Guitar",
+        "type": "n",
+        "phonetic": "/ɡɪˈtɑːr/",
+        "meaning": "Đàn guitar",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Guitar&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Piano",
+        "type": "n",
+        "phonetic": "/piˈænəʊ/",
+        "meaning": "Đàn piano",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Piano&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Play",
+        "type": "v",
+        "phonetic": "/pleɪ/",
+        "meaning": "Chơi",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Play&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Ride",
+        "type": "v",
+        "phonetic": "/raɪd/",
+        "meaning": "Lái",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Ride&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Roller skate",
+        "type": "np",
+        "phonetic": "/ˈrəʊlə skeɪt/",
+        "meaning": "Trượt patin",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Roller%20skate&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Sing",
+        "type": "v",
+        "phonetic": "/sɪŋ/",
+        "meaning": "Hát",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Sing&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Swim",
+        "type": "v",
+        "phonetic": "/ˈswɪm/",
+        "meaning": "Bơi lội",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Swim&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Our school facilities",
+    "words": [
+      {
+        "word": "Building",
+        "type": "n",
+        "phonetic": "/ˈbɪldɪŋ/",
+        "meaning": "Tòa nhà",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Building&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "City",
+        "type": "n",
+        "phonetic": "/ˈsɪti/",
+        "meaning": "Thành phố",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=City&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Computer room",
+        "type": "np",
+        "phonetic": "/kəmˈpjuːtər ruːm/",
+        "meaning": "Phòng máy tính",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Computer%20room&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Facility",
+        "type": "n",
+        "phonetic": "/fəˈsɪlɪti/",
+        "meaning": "Cơ sở vật chất",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Facility&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Flower",
+        "type": "n",
+        "phonetic": "/ˈflaʊər/",
+        "meaning": "Hoa",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Flower&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Garden",
+        "type": "n",
+        "phonetic": "/ˈɡɑːdən/",
+        "meaning": "Vườn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Garden&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Mountain",
+        "type": "n",
+        "phonetic": "/ˈmaʊntɪn/",
+        "meaning": "Núi",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Mountain&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Playground",
+        "type": "n",
+        "phonetic": "/ˈpleɪɡraʊnd/",
+        "meaning": "Sân chơi",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Playground&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Sports",
+        "type": "n",
+        "phonetic": "/spɔːts/",
+        "meaning": "Thể thao",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Sports&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Town",
+        "type": "n",
+        "phonetic": "/taʊn/",
+        "meaning": "Thị trấn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Town&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Village",
+        "type": "n",
+        "phonetic": "/ˈvɪlɪdʒ/",
+        "meaning": "Làng",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Village&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Volleyball",
+        "type": "n",
+        "phonetic": "/ˈvɒlibɔːl/",
+        "meaning": "Bóng chuyền",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Volleyball&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Our timetables",
+    "words": [
+      {
+        "word": "Art",
+        "type": "n",
+        "phonetic": "/ɑːt/",
+        "meaning": "Môn Mỹ thuật",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Art&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Geography",
+        "type": "n",
+        "phonetic": "/dʒiˈɒɡrəfi/",
+        "meaning": "Môn Địa lí",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Geography&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "History",
+        "type": "n",
+        "phonetic": "/ˈhɪstəri/",
+        "meaning": "Môn Lịch sử",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=History&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Like",
+        "type": "v",
+        "phonetic": "/laɪk/",
+        "meaning": "Thích",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Like&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Maths",
+        "type": "n",
+        "phonetic": "/mæθs/",
+        "meaning": "Môn Toán học",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Maths&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Science",
+        "type": "n",
+        "phonetic": "/ˈsaɪəns/",
+        "meaning": "Khoa học",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Science&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Subject",
+        "type": "n",
+        "phonetic": "/ˈsʌbdʒɪkt/",
+        "meaning": "Môn học",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Subject&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Timetable",
+        "type": "n",
+        "phonetic": "/ˈtaɪmˌteɪbəl/",
+        "meaning": "Thời khóa biểu",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Timetable&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Today",
+        "type": "n, adv",
+        "phonetic": "/təˈdeɪ/",
+        "meaning": "Hôm nay",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Today&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Very",
+        "type": "adv",
+        "phonetic": "/ˈveri/",
+        "meaning": "Rất",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Very&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "My favourite subjects",
+    "words": [
+      {
+        "word": "Favourite",
+        "type": "adj",
+        "phonetic": "/ˈfeɪvərɪt/",
+        "meaning": "Yêu thích",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Favourite&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Good",
+        "type": "adj",
+        "phonetic": "/ɡʊd/",
+        "meaning": "Tốt",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Good&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "IT (Information technology)",
+        "type": "n",
+        "phonetic": "/ˌaɪˈtiː/",
+        "meaning": "(/ɪnfəˌmeɪʃən tekˈnɒlədʒi/)",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=IT%20(Information%20technology)&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Audio icon",
+        "type": "Công nghệ thông tin",
+        "phonetic": "Painter",
+        "meaning": "n",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Audio%20icon&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "/ˈpeɪntər/",
+        "type": "Audio icon",
+        "phonetic": "Họa sĩ",
+        "meaning": "PE (Physical education)",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=%2F%CB%88pe%C9%AAnt%C9%99r%2F&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "n",
+        "type": "/ˌpiːˈiː/",
+        "phonetic": "(/ˌfɪzɪkəl edjʊˈkeɪʃən/)",
+        "meaning": "Giáo dục thể chất",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=n&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Singer",
+        "type": "n",
+        "phonetic": "/ˈsɪŋər/",
+        "meaning": "Ca sĩ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Singer&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Teacher",
+        "type": "n",
+        "phonetic": "/ˈtiːtʃər/",
+        "meaning": "Giáo viên",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Teacher&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Why",
+        "type": "adv",
+        "phonetic": "/waɪ/",
+        "meaning": "Tại sao",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Why&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Write",
+        "type": "v",
+        "phonetic": "/raɪt/",
+        "meaning": "Viết",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Write&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Our sports day",
+    "words": [
+      {
+        "word": "Basketball",
+        "type": "n",
+        "phonetic": "/ˈbæskɪtˌbɔːl/",
+        "meaning": "Bóng rổ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Basketball&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Different",
+        "type": "adj",
+        "phonetic": "/ˈdɪfərənt/",
+        "meaning": "Khác biệt",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Different&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Fun",
+        "type": "adj",
+        "phonetic": "/fʌn/",
+        "meaning": "Vui",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Fun&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Game",
+        "type": "n",
+        "phonetic": "/ɡeɪm/",
+        "meaning": "Trò chơi",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Game&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Lot",
+        "type": "n",
+        "phonetic": "/lɑːt/",
+        "meaning": "Nhiều",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Lot&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Many",
+        "type": "adj",
+        "phonetic": "/ˈmeni/",
+        "meaning": "Nhiều",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Many&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Picture",
+        "type": "n",
+        "phonetic": "/ˈpɪktʃər/",
+        "meaning": "Bức tranh",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Picture&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Poster",
+        "type": "n",
+        "phonetic": "/ˈpəʊstər/",
+        "meaning": "Áp phích",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Poster&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "School gym",
+        "type": "np",
+        "phonetic": "/skuːl ɡɪm/",
+        "meaning": "Phòng tập thể dục của trường",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=School%20gym&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Sports day",
+        "type": "np",
+        "phonetic": "/spɔːrts deɪ/",
+        "meaning": "Ngày thể thao",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Sports%20day&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Our summer holidays",
+    "words": [
+      {
+        "word": "Bay",
+        "type": "n",
+        "phonetic": "/beɪ/",
+        "meaning": "Vịnh",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Bay&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Beach",
+        "type": "n",
+        "phonetic": "/biːtʃ/",
+        "meaning": "Bãi biển",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Beach&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Beautiful",
+        "type": "adj",
+        "phonetic": "/ˈbjuːtɪfəl/",
+        "meaning": "Đẹp",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Beautiful&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Big",
+        "type": "adj",
+        "phonetic": "/bɪɡ/",
+        "meaning": "To",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Big&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Campsite",
+        "type": "n",
+        "phonetic": "/ˈkæmpˌsaɪt/",
+        "meaning": "Khu cắm trại",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Campsite&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Countryside",
+        "type": "n",
+        "phonetic": "/ˈkʌntrɪsaɪd/",
+        "meaning": "Khu vực nông thôn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Countryside&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Excellent",
+        "type": "adj",
+        "phonetic": "/ˈɛksələnt/",
+        "meaning": "Xuất sắc",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Excellent&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Food",
+        "type": "n",
+        "phonetic": "/fuːd/",
+        "meaning": "Thức ăn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Food&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Great",
+        "type": "adj",
+        "phonetic": "/ɡreɪt/",
+        "meaning": "Tuyệt vời",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Great&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Helpful",
+        "type": "adj",
+        "phonetic": "/ˈhɛlpfl/",
+        "meaning": "Hữu ích",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Helpful&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Holiday",
+        "type": "n",
+        "phonetic": "/ˈhɒlɪdeɪ/",
+        "meaning": "Kỳ nghỉ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Holiday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Summer",
+        "type": "n",
+        "phonetic": "/ˈsʌmər/",
+        "meaning": "Mùa hè",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Summer&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Yesterday",
+        "type": "adv",
+        "phonetic": "/ˈjɛstərdeɪ/",
+        "meaning": "Hôm qua",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Yesterday&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Zoo",
+        "type": "n",
+        "phonetic": "/zuː/",
+        "meaning": "Sở thú",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Zoo&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "My home",
+    "words": [
+      {
+        "word": "Busy",
+        "type": "adj",
+        "phonetic": "/ˈbɪzi/",
+        "meaning": "Bận rộn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Busy&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Come",
+        "type": "v",
+        "phonetic": "/kʌm/",
+        "meaning": "Đến",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Come&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Flat",
+        "type": "n",
+        "phonetic": "/flæt/",
+        "meaning": "Căn hộ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Flat&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Hotel",
+        "type": "n",
+        "phonetic": "/hoʊˈtɛl/",
+        "meaning": "Khách sạn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Hotel&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "House",
+        "type": "n",
+        "phonetic": "/haʊs/",
+        "meaning": "Nhà",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=House&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Live",
+        "type": "v",
+        "phonetic": "/lɪv/",
+        "meaning": "Sống",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Live&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Noisy",
+        "type": "adj",
+        "phonetic": "/ˈnɔɪzi/",
+        "meaning": "Ồn ào",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Noisy&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Quiet",
+        "type": "adj",
+        "phonetic": "/ˈkwaɪət/",
+        "meaning": "Yên tĩnh",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Quiet&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Road",
+        "type": "n",
+        "phonetic": "/roʊd/",
+        "meaning": "Đường",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Road&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Small",
+        "type": "adj",
+        "phonetic": "/smɔːl/",
+        "meaning": "Nhỏ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Small&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Street",
+        "type": "n",
+        "phonetic": "/striːt/",
+        "meaning": "Phố",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Street&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Jobs",
+    "words": [
+      {
+        "word": "Family",
+        "type": "n",
+        "phonetic": "/ˈfæmɪli/",
+        "meaning": "Gia đinh",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Family&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Mother",
+        "type": "n",
+        "phonetic": "/ˈmʌðər/",
+        "meaning": "Mẹ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Mother&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Father",
+        "type": "n",
+        "phonetic": "/ˈfɑːðər/",
+        "meaning": "Cha",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Father&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Sister",
+        "type": "n",
+        "phonetic": "/ˈsɪstər/",
+        "meaning": "Chị/em gái",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Sister&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Brother",
+        "type": "n",
+        "phonetic": "/ˈbrʌðər/",
+        "meaning": "Anh/em trai",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Brother&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Job",
+        "type": "n",
+        "phonetic": "/dʒɒb/",
+        "meaning": "Công việc",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Job&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Farmer",
+        "type": "n",
+        "phonetic": "/ˈfɑːrmər/",
+        "meaning": "Nông dân",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Farmer&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Policeman",
+        "type": "n",
+        "phonetic": "/pəˈliːsmən/",
+        "meaning": "Cảnh sát",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Policeman&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Office worker",
+        "type": "np",
+        "phonetic": "/ˈɒfɪs ˈwɜːrkər/",
+        "meaning": "Nhân viên văn phòng",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Office%20worker&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Actor",
+        "type": "n",
+        "phonetic": "/ˈæktər/",
+        "meaning": "Diễn viên",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Actor&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Worker",
+        "type": "n",
+        "phonetic": "/ˈwɜːrkər/",
+        "meaning": "Công nhân",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Worker&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Doctor",
+        "type": "n",
+        "phonetic": "/ˈdɒktər/",
+        "meaning": "Bác sĩ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Doctor&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Nurse",
+        "type": "n",
+        "phonetic": "/nɜːrs/",
+        "meaning": "Y tá",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Nurse&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Factory",
+        "type": "n",
+        "phonetic": "/ˈfæktəri/",
+        "meaning": "Nhà máy",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Factory&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Nursing home",
+        "type": "np",
+        "phonetic": "/ˈnɜːrsɪŋ hoʊm/",
+        "meaning": "Viện dưỡng lão",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Nursing%20home&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Appearance",
+    "words": [
+      {
+        "word": "Appearance",
+        "type": "n",
+        "phonetic": "/əˈpɪərəns/",
+        "meaning": "Ngoại hình",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Appearance&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Face",
+        "type": "n",
+        "phonetic": "/feɪs/",
+        "meaning": "Khuôn mặt",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Face&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Eyes",
+        "type": "n",
+        "phonetic": "/aɪz/",
+        "meaning": "Đôi mắt",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Eyes&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Hair",
+        "type": "n",
+        "phonetic": "/heər/",
+        "meaning": "Tóc",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Hair&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Hand(s)",
+        "type": "n",
+        "phonetic": "/hænd(z)/",
+        "meaning": "Bàn tay",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Hand(s)&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Long",
+        "type": "adj",
+        "phonetic": "/lɒŋ/",
+        "meaning": "Dài",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Long&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Round",
+        "type": "adj",
+        "phonetic": "/raʊnd/",
+        "meaning": "Tròn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Round&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Short",
+        "type": "adj",
+        "phonetic": "/ʃɔːt/",
+        "meaning": "Ngắn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Short&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Slim",
+        "type": "adj",
+        "phonetic": "/slɪm/",
+        "meaning": "Thon thả",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Slim&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Tall",
+        "type": "adj",
+        "phonetic": "/tɔːl/",
+        "meaning": "Cao",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Tall&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Daily activities",
+    "words": [
+      {
+        "word": "Activity",
+        "type": "n",
+        "phonetic": "/ækˈtɪvəti/",
+        "meaning": "Hoạt động",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Activity&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Hobby",
+        "type": "n",
+        "phonetic": "/ˈhɒbi/",
+        "meaning": "Sở thích",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Hobby&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Morning",
+        "type": "n",
+        "phonetic": "/ˈmɔːnɪŋ/",
+        "meaning": "Buổi sáng",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Morning&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Noon",
+        "type": "n",
+        "phonetic": "/nuːn/",
+        "meaning": "Buổi trưa",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Noon&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Afternoon",
+        "type": "n",
+        "phonetic": "/ˌɑːftəˈnuːn/",
+        "meaning": "Buổi chiều",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Afternoon&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Evening",
+        "type": "n",
+        "phonetic": "/ˈiːvnɪŋ/",
+        "meaning": "Buổi tối",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Evening&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Watch",
+        "type": "v",
+        "phonetic": "/wɒtʃ/",
+        "meaning": "Xem (TV, phim)",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Watch&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Read",
+        "type": "v",
+        "phonetic": "/riːd/",
+        "meaning": "Đọc",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Read&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Clean",
+        "type": "v",
+        "phonetic": "/kliːn/",
+        "meaning": "Dọn dẹp",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Clean&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Wash",
+        "type": "v",
+        "phonetic": "/wɒʃ/",
+        "meaning": "Giặt/ rửa",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Wash&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Clothes",
+        "type": "n",
+        "phonetic": "/kləʊðz/",
+        "meaning": "Quần áo",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Clothes&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "My family’s weekends",
+    "words": [
+      {
+        "word": "Cinema",
+        "type": "n",
+        "phonetic": "/ˈsɪnəmə/",
+        "meaning": "Rạp chiếu phim",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Cinema&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Film",
+        "type": "n",
+        "phonetic": "/fɪlm/",
+        "meaning": "Phim",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Film&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Go",
+        "type": "v",
+        "phonetic": "/ɡəʊ/",
+        "meaning": "Đi",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Go&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Gym",
+        "type": "n",
+        "phonetic": "/dʒɪm/",
+        "meaning": "Phòng tập tạ, tập thể dục",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Gym&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Meal",
+        "type": "n",
+        "phonetic": "/miːl/",
+        "meaning": "Bữa ăn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Meal&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Tennis",
+        "type": "n",
+        "phonetic": "/ˈtɛnɪs/",
+        "meaning": "Quần vợt",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Tennis&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Shopping centre",
+        "type": "np",
+        "phonetic": "/ˈʃɒpɪŋ ˌsentə/",
+        "meaning": "Trung tâm mua sắm",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Shopping%20centre&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Sports centre",
+        "type": "np",
+        "phonetic": "/ˈspɔːts ˌsentə/",
+        "meaning": "Trung tâm thể thao",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Sports%20centre&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Swimming pool",
+        "type": "np",
+        "phonetic": "/ˈswɪmɪŋ ˌpuːl/",
+        "meaning": "Hồ bơi",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Swimming%20pool&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Yoga",
+        "type": "n",
+        "phonetic": "/ˈjəʊɡə/",
+        "meaning": "Yoga",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Yoga&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Weather",
+    "words": [
+      {
+        "word": "Weather",
+        "type": "n",
+        "phonetic": "/ˈweðər/",
+        "meaning": "Thời tiết",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Weather&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Sunny",
+        "type": "adj",
+        "phonetic": "/ˈsʌni/",
+        "meaning": "Nắng",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Sunny&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Rainy",
+        "type": "adj",
+        "phonetic": "/ˈreɪni/",
+        "meaning": "Mưa",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Rainy&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Windy",
+        "type": "adj",
+        "phonetic": "/ˈwɪndi/",
+        "meaning": "Gió",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Windy&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Cloudy",
+        "type": "adj",
+        "phonetic": "/ˈklaʊdi/",
+        "meaning": "Nhiều mây",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Cloudy&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Water park",
+        "type": "np",
+        "phonetic": "/ˈwɔːtə pɑːrk/",
+        "meaning": "Công viên nước",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Water%20park&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Food stall",
+        "type": "np",
+        "phonetic": "/fuːd stɔːl/",
+        "meaning": "Quầy bán đồ ăn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Food%20stall&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Bookshop",
+        "type": "n",
+        "phonetic": "/ˈbʊkˌʃɒp/",
+        "meaning": "Hiệu sách",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Bookshop&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Bakery",
+        "type": "n",
+        "phonetic": "/ˈbeɪkəri/",
+        "meaning": "Tiệm bánh",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Bakery&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Supermarket",
+        "type": "n",
+        "phonetic": "/ˈsuːpəmɑːrkɪt/",
+        "meaning": "Siêu thị",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Supermarket&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Bread",
+        "type": "n",
+        "phonetic": "/brɛd/",
+        "meaning": "Bánh mì",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Bread&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "In the city",
+    "words": [
+      {
+        "word": "Buy",
+        "type": "v",
+        "phonetic": "/baɪ/",
+        "meaning": "Mua",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Buy&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Cross",
+        "type": "v",
+        "phonetic": "/krɒs/",
+        "meaning": "Băng qua",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Cross&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "How",
+        "type": "adv",
+        "phonetic": "/haʊ/",
+        "meaning": "Như thế nào",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=How&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Left",
+        "type": "adj",
+        "phonetic": "/lɛft/",
+        "meaning": "Bên trái",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Left&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Right",
+        "type": "adj",
+        "phonetic": "/raɪt/",
+        "meaning": "Bên phải",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Right&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Light",
+        "type": "n",
+        "phonetic": "/laɪt/",
+        "meaning": "Đèn",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Light&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Say",
+        "type": "v",
+        "phonetic": "/seɪ/",
+        "meaning": "Nói",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Say&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Stop",
+        "type": "v",
+        "phonetic": "/stɒp/",
+        "meaning": "Dừng lại",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Stop&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Straight",
+        "type": "adv",
+        "phonetic": "/streɪt/",
+        "meaning": "Thẳng",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Straight&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "At the shopping centre",
+    "words": [
+      {
+        "word": "Opposite",
+        "type": "preposition",
+        "phonetic": "/ˈɒpəzɪt/",
+        "meaning": "Đối diện",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Opposite&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Near",
+        "type": "preposition",
+        "phonetic": "/nɪər/",
+        "meaning": "Gần",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Near&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Behind",
+        "type": "preposition",
+        "phonetic": "/bɪˈhaɪnd/",
+        "meaning": "Phía sau",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Behind&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Between",
+        "type": "preposition",
+        "phonetic": "/bɪˈtwiːn/",
+        "meaning": "Ở giữa",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Between&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Food shop",
+        "type": "np",
+        "phonetic": "/fuːd ʃɒp/",
+        "meaning": "Cửa hàng thực phẩm",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Food%20shop&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Gift shop",
+        "type": "np",
+        "phonetic": "/ɡɪft ʃɒp/",
+        "meaning": "Cửa hàng quà lưu niệm",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Gift%20shop&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Pet shop",
+        "type": "np",
+        "phonetic": "/pɛt ʃɒp/",
+        "meaning": "Cửa hàng thú cưng",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Pet%20shop&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Shirt",
+        "type": "n",
+        "phonetic": "/ʃɜːt/",
+        "meaning": "Áo sơ mi",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Shirt&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Skirt",
+        "type": "n",
+        "phonetic": "/skɜːt/",
+        "meaning": "Váy",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Skirt&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "School bag",
+        "type": "np",
+        "phonetic": "/skuːl bæɡ/",
+        "meaning": "Cặp sách",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=School%20bag&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Nice",
+        "type": "adj",
+        "phonetic": "/naɪs/",
+        "meaning": "Dễ thương, đẹp",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Nice&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Price",
+        "type": "n",
+        "phonetic": "/praɪs/",
+        "meaning": "Giá cả",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Price&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "The animal world",
+    "words": [
+      {
+        "word": "Giraffe",
+        "type": "n",
+        "phonetic": "/dʒɪˈrɑːf/",
+        "meaning": "Hươu cao cổ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Giraffe&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Hippo",
+        "type": "n",
+        "phonetic": "/ˈhɪpəʊ/",
+        "meaning": "Hà mã",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Hippo&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Lion",
+        "type": "n",
+        "phonetic": "/ˈlaɪən/",
+        "meaning": "Sư tử",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Lion&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Bird",
+        "type": "n",
+        "phonetic": "/bɜːd/",
+        "meaning": "Chim",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Bird&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Crocodile",
+        "type": "n",
+        "phonetic": "/ˈkrɒkədaɪl/",
+        "meaning": "Cá sấu",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Crocodile&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Peacock",
+        "type": "n",
+        "phonetic": "/ˈpiːkɒk/",
+        "meaning": "Con công",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Peacock&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Brave",
+        "type": "adj",
+        "phonetic": "/breɪv/",
+        "meaning": "Dũng cảm",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Brave&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Strong",
+        "type": "adj",
+        "phonetic": "/strɒŋ/",
+        "meaning": "Mạnh mẽ",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Strong&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Roar",
+        "type": "v",
+        "phonetic": "/rɔːr/",
+        "meaning": "Gầm, rống",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Roar&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Merrily",
+        "type": "adv",
+        "phonetic": "/ˈmerɪli/",
+        "meaning": "Vui vẻ, hân hoan",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Merrily&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Quickly",
+        "type": "adv",
+        "phonetic": "/ˈkwɪkli/",
+        "meaning": "Nhanh chóng",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Quickly&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "At summer camp",
+    "words": [
+      {
+        "word": "Build",
+        "type": "v",
+        "phonetic": "/bɪld/",
+        "meaning": "Xây dựng",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Build&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Put up",
+        "type": "phrasal verb",
+        "phonetic": "/pʊt ʌp/",
+        "meaning": "Dựng lên",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Put%20up&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Tell",
+        "type": "v",
+        "phonetic": "/tel/",
+        "meaning": "Kể, nói",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Tell&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Email",
+        "type": "v",
+        "phonetic": "/ˈiːmeɪl/",
+        "meaning": "Gửi Email",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Email&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Visit",
+        "type": "v",
+        "phonetic": "/ˈvɪzɪt/",
+        "meaning": "Thăm",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Visit&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Tent",
+        "type": "n",
+        "phonetic": "/tent/",
+        "meaning": "Lều trại",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Tent&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Campfire",
+        "type": "n",
+        "phonetic": "/ˈkæmpfaɪər/",
+        "meaning": "Lửa trại",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Campfire&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Photo",
+        "type": "n",
+        "phonetic": "/ˈfəʊtəʊ/",
+        "meaning": "Ảnh",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Photo&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Song",
+        "type": "n",
+        "phonetic": "/sɒŋ/",
+        "meaning": "Bài hát",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Song&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Card games",
+        "type": "n",
+        "phonetic": "/kɑːd ɡeɪmz/",
+        "meaning": "Trò chơi bài",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Card%20games&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      },
+      {
+        "word": "Tug of war",
+        "type": "n",
+        "phonetic": "/ˌtʌɡ əv ˈwɔːr/",
+        "meaning": "Trò kéo co",
+        "imageUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Tug%20of%20war&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+      }
+    ]
+  }
+];
